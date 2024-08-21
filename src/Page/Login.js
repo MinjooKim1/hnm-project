@@ -1,11 +1,19 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
+import { Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faApple } from "@fortawesome/free-brands-svg-icons";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setAuthenticate }) => {
+  const navigate = useNavigate();
+  const loginUser = (event) => {
+    event.preventDefault();
+    console.log("login");
+    setAuthenticate(true);
+    navigate("/");
+  };
   return (
     <div className="login-page">
       <div className="login-wrapped">
@@ -26,17 +34,26 @@ const Login = () => {
           <span>OR</span>
         </div>
 
-        <div className="input-wrap">
-          <div>Email</div>
-          <input type="text" placeholder="Your email" />
-        </div>
-        <div className="input-wrap">
-          <div>Password</div>
-          <input type="text" placeholder="Your password" />
-        </div>
-        <Button className="login-btn" variant="primary">
-          Sign in
-        </Button>
+        <Form onSubmit={(event) => loginUser(event)}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label="Check me out" />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Sign in
+          </Button>
+        </Form>
       </div>
     </div>
   );
