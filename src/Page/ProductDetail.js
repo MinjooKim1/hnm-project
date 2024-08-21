@@ -20,12 +20,12 @@ const ProductDetail = () => {
   };
   useEffect(() => {
     getProductDetail();
-  });
+  }, []);
   return (
     <Container>
       <Row>
         <Col>
-          <img src={product?.img} alt={product.title} />
+          <img src={product?.img} alt={product?.title} />
         </Col>
 
         <Col>
