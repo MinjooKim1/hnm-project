@@ -1,38 +1,112 @@
-.App {
-  text-align: center;
+.login-button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1em;
+  gap: 10px;
+  text-decoration: none;
+  color: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login-button .fa-user {
+  margin: 3px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav-section {
+  display: flex;
+  justify-content: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.menu-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-list {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.menu-list li {
+  padding: 10px;
+}
+.input-area {
+  border-bottom: 2px solid rgb(111, 111, 111);
+  height: 30px;
+  position: absolute;
+  right: 12px;
+}
+
+.input-box {
+  border: none;
+  margin-left: 5px;
+}
+
+.item-area {
+  transition: 0.3s
+}
+
+.item-area:hover {
+  background-color: white;
+  transform: scale(1.1);
+
+}
+/* login page */
+.login-page {
+  display: flex;
+  justify-content: center;
+}
+
+.login-wrapped {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  width: 500px;
+  height: 80%;
+  border: 1px solid rgb(140, 140, 140);
+  border-radius: 10px;
+  padding: 3em;
 }
 
-.App-link {
-  color: #61dafb;
+.button-wrap {
+  margin: 1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-wrap Button {
+  border: 1px solid rgb(191, 191, 191);
+  width: 100px;
+  height: 45px;
+  margin: 10px;
+}
+
+.or-divider {
+  display: flex;
+  justify-content: center;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #d3d3d3;
+  margin: 10px 20px;
+}
+
+.input-wrap {
+  margin: 1em 3em;
+  text-align: left;
+}
+
+.input-wrap input {
+  padding-left: 10px;
+  width: 100%;
+  height: 40px;
+}
+
+.login-btn {
+  width: 75%;
+  margin-left: 12%;
+
 }
