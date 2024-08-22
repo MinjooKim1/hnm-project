@@ -6,7 +6,7 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faApple } from "@fortawesome/free-brands-svg-icons";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setAuthenticate }) => {
+const Login = ({ authenticate, setAuthenticate }) => {
   const navigate = useNavigate();
   const loginUser = (event) => {
     event.preventDefault();

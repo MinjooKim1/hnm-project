@@ -21,16 +21,21 @@ import PrivateRoute from "./route/PrivateRoute";
 function App() {
   const [authenticate, setAuthenticate] = useState(false); //true = login //false = logined yet
   useEffect(() => {
-    console.log("aa", authenticate);
+    console.log("login", authenticate);
   }, [authenticate]);
   return (
     <div>
-      <Navbar />
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
       <Routes>
         <Route path="/" element={<ProductAll />} />
         <Route
           path="/login"
-          element={<Login setAuthenticate={setAuthenticate} />}
+          element={
+            <Login
+              authenticate={authenticate}
+              setAuthenticate={setAuthenticate}
+            />
+          }
         />
         <Route
           path="/product/:id"

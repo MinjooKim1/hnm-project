@@ -2,20 +2,37 @@ import { useEffect, useState } from "react";
 import ProductCard from "../component/ProductCard";
 import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useSearchParams } from "react-router-dom";
 
 const ProductAll = () => {
-  const [productList, SetProductList] = useState([]);
+  const [productList, setProductList] = useState([]);
+  const [query, setQuery] = useSearchParams();
 
   const getProducts = async () => {
-    let url = `http://localhost:4000/products`;
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log("data", data);
-    SetProductList(data);
+    try {
+      const searchQuery = query.get("q") || "";
+      const PORT_NUM = "4000";
+      const url = new URL(`http://localhost:4000/products?q=${searchQuery}`);
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(response.statusText);
+      const data = await response.json();
+      const filteredData = searchQuery
+        ? data.filter((item) => item.title.includes(searchQuery))
+        : data;
+      console.log("filtered:", filteredData);
+      if (filteredData.length === 0) {
+        alert("no result");
+        return;
+      }
+      setProductList(filteredData);
+    } catch (err) {
+      console.error("error: ", err);
+    }
   };
+
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [query]);
   return (
     <div>
       <Container>

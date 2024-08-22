@@ -45,13 +45,16 @@
   margin-left: 5px;
 }
 
-.item-area {
-  transition: 0.3s
+.item-area img {
+  transition: 0.3s;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
-.item-area:hover {
-  background-color: white;
-  transform: scale(1.1);
+.item-area img:hover {
+  transition: 0.4s;
+  scale: 1.08;
 
 }
 /* login page */
