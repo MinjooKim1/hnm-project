@@ -9,12 +9,17 @@ const ProductCard = ({ item }) => {
   return (
     <div onClick={showDetail}>
       <div className="item-area">
+        <div className="choice">
+          {item?.choice === true ? "Conscious choice" : ""}
+        </div>
         <img src={item?.img} alt={item?.title} width={300} />
       </div>
-      <div>{item?.choice === true ? "Conscious choice" : ""}</div>
-      <div>{item?.title}</div>
-      <div>{item?.price}</div>
-      <div className="blink_me">{item?.new === true ? "New" : ""}</div>
+
+      <div className="title-wrap">
+        <div>{item?.title}</div>
+        <div>{item?.new === true ? "New" : ""}</div>
+      </div>
+      <div>${item?.price}</div>
     </div>
   );
 };
