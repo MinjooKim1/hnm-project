@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
   const menuList = ["Women", "Men", "Kids", "Home"];
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const goToLogin = () => {
     if (authenticate) {
@@ -31,8 +32,43 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   const goToMain = () => {
     navigate("/");
   };
+  const sideMenuOpen = () => {
+    setIsMenuOpen(true);
+    console.log("open");
+  };
+  const sideMenuClosed = () => {
+    setIsMenuOpen(false);
+  };
   return (
     <div>
+      <div className={`mobile-nav ${isMenuOpen ? "open" : ""}`}>
+        <FontAwesomeIcon icon={faBars} onClick={sideMenuOpen} />
+        <FontAwesomeIcon icon={faSearch} />
+        <div>
+          {authenticate ? (
+            <div className="login-buttonn" onClick={logoutUser}>
+              <FontAwesomeIcon icon={faUser} />
+              <div>Logout</div>
+            </div>
+          ) : (
+            <div className="login-buttonn" onClick={goToLogin}>
+              <FontAwesomeIcon icon={faUser} />
+              <div>Sign In</div>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className={`mobile-side ${isMenuOpen ? "open" : ""}`}>
+        <FontAwesomeIcon icon={faTimes} onClick={sideMenuClosed} />
+        <div>
+          <ul className="mobile-menu-list">
+            {menuList.map((menu) => (
+              <li>{menu}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
       <div>
         {authenticate ? (
           <div className="login-button" onClick={logoutUser}>
