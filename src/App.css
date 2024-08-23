@@ -192,14 +192,14 @@ padding-top: 3px;
 .mobile-side{
   width: 250px;
   height: 100vh;
-  background-color: #d3d3d3;
+  background-color: #e3e3e3;
   position: fixed;
   z-index: 1;
   top: 0;
   left:-250px;
   transition: left 0.3s ease-in-out;
 }
-.mobile-side .open {
+.mobile-side.open {
   left: 0;
 }
 .mobile-menu-list{
@@ -216,7 +216,22 @@ padding-top: 3px;
 .mobile-side svg{
   margin: 1em;
 }
-
+.mobile-input-area{
+    margin-left: 5px;
+    display: flex;
+    align-items: start;
+    margin-top: 0;
+}
+.mobile-input-box.open{
+  display: flex;
+    border: none;
+    margin: 10px 0;
+    border-bottom: solid 1px black;
+    background: none;
+}
+.mobile-input-box{
+  display: none;
+}
 
  @media(max-width: 779px){
 .input-area{

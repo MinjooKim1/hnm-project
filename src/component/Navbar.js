@@ -8,6 +8,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   const menuList = ["Women", "Men", "Kids", "Home"];
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const goToLogin = () => {
     if (authenticate) {
@@ -39,11 +40,23 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
   const sideMenuClosed = () => {
     setIsMenuOpen(false);
   };
+  const searchOpen = () => {
+    setIsSearchOpen(!isSearchOpen);
+    console.log("oepn?");
+  };
   return (
     <div>
       <div className={`mobile-nav ${isMenuOpen ? "open" : ""}`}>
         <FontAwesomeIcon icon={faBars} onClick={sideMenuOpen} />
-        <FontAwesomeIcon icon={faSearch} />
+        <div className="mobile-input-area">
+          <FontAwesomeIcon icon={faSearch} onClick={searchOpen} />
+          <input
+            className={`mobile-input-box  ${isSearchOpen ? "open" : ""}`}
+            type="text"
+            placeholder="Search"
+            onKeyDown={(event) => search(event)}
+          />
+        </div>
         <div>
           {authenticate ? (
             <div className="login-buttonn" onClick={logoutUser}>
