@@ -145,3 +145,21 @@
   padding: 2px 0;
   margin-bottom: 1em;
 }
+
+/* card */
+.blink_me{
+  animation: blink 1s infinite;
+}
+                @keyframes blink {
+                  0% {
+                    opacity: 1;
+                  }
+        
+                  50% {
+                    opacity: 0;
+                  }
+        
+                  100% {
+                    opacity: 1;
+                  }
+                }

@@ -12,7 +12,9 @@ const ProductAll = () => {
     try {
       const searchQuery = query.get("q") || "";
       const PORT_NUM = "4000";
-      const url = new URL(`http://localhost:4000/products?q=${searchQuery}`);
+      const url = new URL(
+        `https://my-json-server.typicode.com/MinjooKim1/hnm-project/products?q=${searchQuery}`
+      );
       const response = await fetch(url);
       if (!response.ok) throw new Error(response.statusText);
       const data = await response.json();
